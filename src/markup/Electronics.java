@@ -1,9 +1,8 @@
 package markup;
 
 public class Electronics extends ProductDecorator {
-  private String name;
 
-public Electronics(Product item) {
+  public Electronics(Product item) {
     super(item);
   }
 
