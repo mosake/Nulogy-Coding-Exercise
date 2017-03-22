@@ -1,5 +1,10 @@
 package markup;
 
+/**
+ * Electronics concrete product type.
+ * @author Kelly Mo
+ */
+
 public class Electronics extends ProductDecorator {
 
   public Electronics(Product item) {

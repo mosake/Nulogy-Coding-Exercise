@@ -1,5 +1,10 @@
 package markup;
 
+/**
+ * Pharmacutical concrete product type.
+ * @author Kelly Mo
+ */
+
 public class Pharmacy extends ProductDecorator {
 
   public Pharmacy(Product item) {

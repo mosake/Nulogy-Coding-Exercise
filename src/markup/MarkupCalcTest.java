@@ -4,6 +4,11 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+/**
+ * JUnit testing for MarkupCalc.java.
+ * @author Kelly Mo
+ */
+
 public class MarkupCalcTest {
   MarkupCalc calc = new MarkupCalc(1299.99, 3, new Food(new NoProductType()));
   

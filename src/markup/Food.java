@@ -1,5 +1,10 @@
 package markup;
 
+/**
+ * Food concrete product type.
+ * @author Kelly Mo
+ */
+
 public class Food extends ProductDecorator {
 
   public Food(Product item) {

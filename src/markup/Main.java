@@ -7,6 +7,11 @@ import java.util.List;
 import java.util.Map;
 
 
+/**
+ * Main class for MarkupCalc.
+ * @author Kelly Mo
+ */
+
 public class Main {
   
   private Map<String, String> materials = new HashMap<String, String>();

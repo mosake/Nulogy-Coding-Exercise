@@ -9,6 +9,7 @@ public class MarkupCalc {
   /**  Initializes the Mark up Calculator.
    * @param base cost original product
    * @param workers number of workers on the job
+   * @author Kelly Mo
    */
   public MarkupCalc(double base, int workers, Product item) {
     this.markup = 0;

@@ -9,6 +9,12 @@ import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * JUnit test for Main.java's main method.
+ * Catching stdout was annoying :(
+ * @author Kelly Mo
+ */
+
 public class MainTest {
   // map of input strings and expected output strings
   private Map<String, String> tests = new HashMap<String, String>();
