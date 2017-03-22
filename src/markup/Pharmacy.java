@@ -8,6 +8,6 @@ public class Pharmacy extends ProductDecorator {
 
   @Override
   public double getMarkup() {
-    return 0.075;
+    return item.getMarkup() + 0.075;
   }
 }

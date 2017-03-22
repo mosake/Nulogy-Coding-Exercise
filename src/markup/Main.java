@@ -9,28 +9,66 @@ import java.util.Map;
 
 public class Main {
   
-  private Map<String, List<String>> materials = new HashMap<String, List<String>>();
+  private Map<String, String> materials = new HashMap<String, String>();
   
   // add new string references here
-  private List<String> foodWords = new ArrayList<String>(Arrays.asList("food"));
+  private List<String> foodWords = new ArrayList<String>(Arrays.asList("food", "apple"));
   private List<String> pharmaWords = new ArrayList<String>(Arrays.asList("drugs"));
-  private List<String> electWords = new ArrayList<String>(Arrays.asList("electronics"));
+  private List<String> electWords = new ArrayList<String>(Arrays.asList("electronics", 
+          "TV", "phone"));
 
   /** Initializes the Main class.
    * this.materials contains the string references to the type of material used
    *  A map with dynamically sized list in case additional mark up materials are added
    *    key: type of material
-   *    value: string list of keywords
+   *    value: Product name of material
    * i.e
-   *   pharmaceuticals -> drugs
-   *   food -> food
-   *   electronics -> electronics
+   *   Pharmacy <- drugs
+   *   Food <- food
+   *   Electronics <- electronics
    * new strings can be added in the constants above
    */
   public Main() {
-    this.materials.put("pharmaceuticals" , pharmaWords);
-    this.materials.put("food" , foodWords);
-    this.materials.put("electronics" , electWords);
+    for (String temp : pharmaWords) {
+      this.materials.put(temp, "Pharmacy");
+    }
+    for (String temp : foodWords) {
+      this.materials.put(temp, "Food");
+    }
+    for (String temp : electWords) {
+      this.materials.put(temp, "Electronics");
+    }
+  }
+  
+  /** Creates a new product with additional mark up categories.
+   * The purpose of this is to have a product that will return 
+   * the total additional mark ups on one product call.
+   * New categories can be added here as an additional switch statement.
+   * 
+   * @param type list of mark up categories
+   * @return Decorated Product
+   */
+  
+  public static Product makeProduct(List<String> type) {
+    Product myProduct = new NoProductType();
+    if (type.size() != 0) {
+      for (String temp : type) {
+        switch (temp) {
+          case "Electronics":
+            myProduct = new Electronics(myProduct);
+            break;
+          case "Food":
+            myProduct = new Food(myProduct);
+            break;
+          case "Pharmacy":
+            myProduct = new Pharmacy(myProduct);
+            break;
+          default:
+            break;
+        }
+      }
+    }
+    return (myProduct);
   }
   
   /** White box testing
@@ -44,8 +82,8 @@ public class Main {
 
    */
   public static void main(String[] args) {
-    String in = args[0];
     if (args.length != 0) {
+      String in = args[0];
       List<String> input = new ArrayList<String>(Arrays.asList(in.split(", ")));
       
       // format base number to double
@@ -58,6 +96,13 @@ public class Main {
       
       // format mark up type as a list in case of multiple inputs
       List<String> type = input;
+      Product myProduct = makeProduct(type);
+      
+      // set output
+      MarkupCalc output = new MarkupCalc(base, numPeople, myProduct);
+      
+      // return output using stdout
+      System.out.println(output);
     }
   }
 }

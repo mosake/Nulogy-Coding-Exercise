@@ -2,7 +2,7 @@ package markup;
 
 public class ProductDecorator implements Product {
 
-  private Product item;
+  protected Product item;
   
   public ProductDecorator(Product item) {
     this.item = item;

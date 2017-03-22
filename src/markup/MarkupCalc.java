@@ -25,4 +25,9 @@ public class MarkupCalc {
   public double calcCost() {
     return this.basePrice + (this.basePrice * getMarkup());
   }
+  
+  @Override
+  public String toString() {
+    return (String.format("$%,.2f", calcCost()));
+  }
 }

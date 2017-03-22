@@ -8,6 +8,6 @@ public class Food extends ProductDecorator {
 
   @Override
   public double getMarkup() {
-    return 0.13;
+    return item.getMarkup() + 0.13;
   }
 }

@@ -1,12 +1,15 @@
 package markup;
 
 public class Electronics extends ProductDecorator {
-  public Electronics(Product item) {
+  private String name;
+
+public Electronics(Product item) {
     super(item);
   }
 
   @Override
   public double getMarkup() {
-    return 0.02;
+    return item.getMarkup() + 0.02;
   }
+  
 }
