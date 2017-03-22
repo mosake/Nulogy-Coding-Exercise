@@ -11,19 +11,20 @@ public class MarkupCalc {
    * @param workers number of workers on the job
    */
   public MarkupCalc(double base, int workers, Product item) {
-    this.markup = 0.05;
+    this.markup = 0;
     this.numWorkers = workers;
-    this.basePrice = base;
+    // "The flat markup is calculated first"
+    this.basePrice = base + base*0.05;
     this.product = item;
   }
 
-  public double getMarkup() {
-    this.markup += this.product.getMarkup();
-    return (this.markup + this.numWorkers * 0.012);
+  public double markup() {
+    this.markup = this.product.getMarkup();
+    return (this.markup + (this.numWorkers * 0.012));
   }
 
   public double calcCost() {
-    return this.basePrice + (this.basePrice * getMarkup());
+    return this.basePrice + (this.basePrice * markup());
   }
   
   @Override
