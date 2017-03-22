@@ -49,23 +49,27 @@ public class Main {
    * @return Decorated Product
    */
   
-  public static Product makeProduct(List<String> type) {
+  public Product makeProduct(List<String> type) {
     Product myProduct = new NoProductType();
-    if (type.size() != 0) {
+    if (type != null) {
       for (String temp : type) {
-        switch (temp) {
-          case "Electronics":
-            myProduct = new Electronics(myProduct);
-            break;
-          case "Food":
-            myProduct = new Food(myProduct);
-            break;
-          case "Pharmacy":
-            myProduct = new Pharmacy(myProduct);
-            break;
-          default:
-            break;
+        String typeProd = this.materials.get(temp);
+        if (typeProd != null) {
+          switch (typeProd) {
+            case "Electronics":
+              myProduct = new Electronics(myProduct);
+              break;
+            case "Food":
+              myProduct = new Food(myProduct);
+              break;
+            case "Pharmacy":
+              myProduct = new Pharmacy(myProduct);
+              break;
+            default:
+              break;
+          }  
         }
+        
       }
     }
     return (myProduct);
@@ -95,14 +99,15 @@ public class Main {
       input.remove(0);
       
       // format mark up type as a list in case of multiple inputs
-      List<String> type = input;
-      Product myProduct = makeProduct(type);
+      List<String> type = new ArrayList<String>(input);
+      Main myMain = new Main();
+      Product myProduct = myMain.makeProduct(type);
       
       // set output
       MarkupCalc output = new MarkupCalc(base, numPeople, myProduct);
       
       // return output using stdout
-      System.out.println(output);
+      System.out.print(output);
     }
   }
 }
