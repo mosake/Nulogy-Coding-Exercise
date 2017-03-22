@@ -10,5 +10,4 @@ public class Electronics extends ProductDecorator {
   public double getMarkup() {
     return item.getMarkup() + 0.02;
   }
-  
 }

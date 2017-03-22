@@ -26,7 +26,7 @@ public class MainTest {
     // run all tests in map
     for (String i : this.tests.keySet()) {
       String input = i;
-      String output = this.tests.get(i);
+      final String output = this.tests.get(i);
       // toilet... to catch the pstream :P
       final ByteArrayOutputStream toilet = new ByteArrayOutputStream();
 
