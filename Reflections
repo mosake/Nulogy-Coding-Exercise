@@ -1,0 +1,55 @@
+Reflections
+
+I had essentially two days to write this. 
+So I ended up follwoing my Agile development instincts and split up my work into manageable parts.
+
+The first part contained a planning stage and writing up the framework for my intended classes.
+The second part was for writing out the code and rewriting when I encountered a better approach while writing typing out my classes.
+The third part included writing up the main class to take in the given input and writing out the respective output.
+The fourth part set time aside for writing test suites in jUnit and debugging using those tests.
+
+First part [day 1]:
+	[see planning.pdf]
+	I decided to go through the exercise instructions and pulled out key information. 
+	I needed to know which classes and objects I would need to create and how they interacted with each other.
+
+	In the top right corner of planning.pdf I decided to create an object, jobs with children: pharmaceuticals, food and electronics.
+	This object would interact with the main calculator and an object person.
+
+	This design felt flawed in the sense that person wouldn't have to be represented as anything other than an integer so creating an entire object dedicated to that seemed excessive. Also in terms of having modular code I initially decided on the strategy design pattern by seting jobs up as an interface instead.
+
+	However I thought about this a bit more and considered that there could be a case where a product has more than one additional markup type. For example, a blood glucose monitor would be both a pharmaceutical item and an electronic. So I chose to work with the Decorator design pattern instead.
+
+	I chose to use the singleton design patter to call markupCalc in its own static class.
+
+	To make my planned implementation a bit smoother, I sketched out a rough UML diagram.
+
+Second part [day 1]:
+	I made a few changes from my original UML:
+		The jobs class was renamed to product
+		The getMarkup returned an double instead of an integer
+		markupCalc was seperated and only dealt with running the markup calculations
+		I wanted to follow object oriented design so I left pharmaceuticals, food and electronics as they were.
+			It could also be useful in case something else has to be calculated for them individually in the future.
+
+Third part [day 2]:
+	I made more changes to the UML:
+		Main took over the i/o implementation of markupCalc
+			Mainly because I'm not sure how the base price is passed in so I'd rather one method in this class than go through a bunch of methods within the calculation class.
+			Singleton design pattern was also moved to here.
+	Within main I mapped keywords to the corresponding object so that in the future additional keywords might be added.
+
+Fourth part [day 2]:
+	I FORGOT HOW TO WRITE UNIT TESTS.
+	So I spent a bit of time googling to get a refresher.
+	
+	During testing I fixed up a bug where the Main class had the map associated the wrong way.
+	Also another bug where the automatic 5% markup was calculated alongside the additional markups instead of before them.
+	Lastly a bug where a null pointer was referenced.
+
+	These bugs + changes can be found in my commit logs.
+
+
+Overall I had actually had fun writing this challenge up.
+It seemed more straightforward than I had initially judged but planning definately saved a lot of time when I started writing up my code.
+I forgot how to write unit tests and catching stdout was something I had to relearn.
